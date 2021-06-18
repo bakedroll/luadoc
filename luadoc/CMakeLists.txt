@@ -1,31 +1,14 @@
-set(CMAKE_AUTORCC ON)
+begin_project(luadoc LIBRARY)
 
-set(PROJECT_NAME luadoc)
+enable_autorcc()
 
-add_source_directory(LUADOC_SOURCE src)
-add_source_directory(LUADOC_SOURCE include)
+require_library(Qt6 MODULES Core)
+require_library(Lua)
+require_library(LuaBridge)
 
-set(LUADOC_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_source_directory(src)
+add_source_directory(include)
 
-# add library luadoc
-add_library(${PROJECT_NAME}
-  ${LUADOC_SOURCE}
-  ${CMAKE_CURRENT_SOURCE_DIR}/luadoc_resources.qrc)
+add_qrc_files(luadoc_resources.qrc)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES DEBUG_POSTFIX "d")
-
-source_group(Resources FILES ${CMAKE_CURRENT_SOURCE_DIR}/luadoc_resources.qrc)
-
-# set include directories
-target_include_directories(${PROJECT_NAME} PUBLIC
-  ${LUADOC_INCLUDE_DIR}
-  ${LUA_INCLUDE_PREFIX}/include
-  ${LUA_INCLUDE_DIR}
-  ${LUABRIDGE_INCLUDE_DIR}
-  ${Qt${QT_VERSION}Core_INCLUDE_DIRS}
-  ${OSGHELPER_INCLUDE_DIR})
-
-set(CMAKE_AUTORCC OFF)
-
-# make variable globally accessable
-set(LUADOC_INCLUDE_DIR ${LUADOC_INCLUDE_DIR} PARENT_SCOPE)
+add_include_directory(include)

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <osgHelper/Macros.h>
-
 #include <QDir>
 #include <QString>
 
@@ -21,6 +19,14 @@ extern "C"
 }
 
 #include <LuaBridge/LuaBridge.h>
+
+#ifndef assert_return
+#define assert_return(cond, ...) if (!(cond)) { assert(false); return __VA_ARGS__; }
+#endif
+
+#ifndef assert_continue
+#define assert_continue(cond) if (!(cond)) { assert(false); continue; }
+#endif
 
 namespace luadoc
 {
