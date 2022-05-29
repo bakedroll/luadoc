@@ -2,7 +2,7 @@ begin_project(luadoc LIBRARY)
 
 enable_autorcc()
 
-require_library(Qt6 MODULES Core)
+require_library(Qt MODULES Core)
 require_library(Lua)
 require_library(LuaBridge)
 

@@ -1,6 +1,6 @@
 begin_project(luadocTest EXECUTABLE OPTIONAL)
 
-require_library(Qt6 MODULES Core)
+require_library(Qt MODULES Core)
 require_library(GTest)
 require_library(Lua)
 require_library(LuaBridge)
